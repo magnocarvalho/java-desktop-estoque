@@ -1,0 +1,3 @@
+banco usado foi o postgress sql.
+
+carregar backup no postgress.

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/11/2016 00:32:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="utfpr.edu.br.controleestoque.vo.Produto" optimistic-lock="version" schema="public" table="produto">
+    <id name="idproduto" type="int">
+      <column name="idproduto"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="utfpr.edu.br.controleestoque.vo.Categoria" fetch="select" name="categoria">
+      <column name="categoriaproduto"/>
+    </many-to-one>
+    <many-to-one class="utfpr.edu.br.controleestoque.vo.Fornecedor" fetch="select" name="fornecedor">
+      <column name="fornecedorproduto"/>
+    </many-to-one>
+    <property name="descricaoproduto" type="string">
+      <column length="50" name="descricaoproduto"/>
+    </property>
+    <property name="codigoproduto" type="string">
+      <column length="20" name="codigoproduto"/>
+    </property>
+    <property name="custoproduto" type="big_decimal">
+      <column name="custoproduto" precision="10"/>
+    </property>
+    <property name="vendaproduto" type="big_decimal">
+      <column name="vendaproduto" precision="10"/>
+    </property>
+    <property name="minimoproduto" type="java.lang.Long">
+      <column name="minimoproduto"/>
+    </property>
+    <property name="maximoproduto" type="java.lang.Long">
+      <column name="maximoproduto"/>
+    </property>
+    <property name="quantidade" type="java.lang.Long">
+      <column name="quantidade"/>
+    </property>
+    <property name="criacaoproduto" type="timestamp">
+      <column length="29" name="criacaoproduto"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="itemcompras" table="itemcompra">
+      <key>
+        <column name="produtoitemcompra"/>
+      </key>
+      <one-to-many class="utfpr.edu.br.controleestoque.vo.Itemcompra"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="itemvendas" table="itemvenda">
+      <key>
+        <column name="produtoitemvenda"/>
+      </key>
+      <one-to-many class="utfpr.edu.br.controleestoque.vo.Itemvenda"/>
+    </set>
+  </class>
+</hibernate-mapping>

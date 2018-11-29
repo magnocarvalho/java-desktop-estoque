@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/11/2016 00:32:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="utfpr.edu.br.controleestoque.vo.Categoria" optimistic-lock="version" schema="public" table="categoria">
+    <id name="idcategoria" type="int">
+      <column name="idcategoria"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="descricaocategoria" type="string">
+      <column length="50" name="descricaocategoria"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="produtos" table="produto">
+      <key>
+        <column name="categoriaproduto"/>
+      </key>
+      <one-to-many class="utfpr.edu.br.controleestoque.vo.Produto"/>
+    </set>
+  </class>
+</hibernate-mapping>

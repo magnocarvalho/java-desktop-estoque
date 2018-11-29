@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/11/2016 00:32:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="utfpr.edu.br.controleestoque.vo.Pagamento" optimistic-lock="version" schema="public" table="pagamento">
+    <id name="idpagamento" type="int">
+      <column name="idpagamento"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="utfpr.edu.br.controleestoque.vo.Compra" fetch="select" name="compra">
+      <column name="comprapagamento"/>
+    </many-to-one>
+    <many-to-one class="utfpr.edu.br.controleestoque.vo.Funcionario" fetch="select" name="funcionario">
+      <column name="funcionariopagamento"/>
+    </many-to-one>
+    <property name="descricao" type="string">
+      <column length="50" name="descricao"/>
+    </property>
+    <property name="valorpagamento" type="big_decimal">
+      <column name="valorpagamento" precision="10"/>
+    </property>
+    <property name="datapagamento" type="date">
+      <column length="13" name="datapagamento"/>
+    </property>
+    <property name="criacaopagamento" type="timestamp">
+      <column length="29" name="criacaopagamento"/>
+    </property>
+  </class>
+</hibernate-mapping>

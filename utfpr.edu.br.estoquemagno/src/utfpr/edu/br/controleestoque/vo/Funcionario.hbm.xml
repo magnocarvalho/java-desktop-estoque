@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/11/2016 00:32:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="utfpr.edu.br.controleestoque.vo.Funcionario" optimistic-lock="version" schema="public" table="funcionario">
+    <id name="idfuncionario" type="int">
+      <column name="idfuncionario"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nomefuncionario" type="string">
+      <column length="50" name="nomefuncionario"/>
+    </property>
+    <property name="cargofuncionario" type="string">
+      <column length="20" name="cargofuncionario"/>
+    </property>
+    <property name="emailcontato" type="string">
+      <column length="30" name="emailcontato"/>
+    </property>
+    <property name="telefone" type="string">
+      <column length="20" name="telefone"/>
+    </property>
+    <property name="celular" type="string">
+      <column length="20" name="celular"/>
+    </property>
+    <property name="criacaofuncionario" type="timestamp">
+      <column length="29" name="criacaofuncionario"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="pagamentos" table="pagamento">
+      <key>
+        <column name="funcionariopagamento"/>
+      </key>
+      <one-to-many class="utfpr.edu.br.controleestoque.vo.Pagamento"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="vendas" table="venda">
+      <key>
+        <column name="funcionariovenda"/>
+      </key>
+      <one-to-many class="utfpr.edu.br.controleestoque.vo.Venda"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="recebimentos" table="recebimento">
+      <key>
+        <column name="funcionariorecebimento"/>
+      </key>
+      <one-to-many class="utfpr.edu.br.controleestoque.vo.Recebimento"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="compras" table="compra">
+      <key>
+        <column name="funcionariocompra"/>
+      </key>
+      <one-to-many class="utfpr.edu.br.controleestoque.vo.Compra"/>
+    </set>
+  </class>
+</hibernate-mapping>
